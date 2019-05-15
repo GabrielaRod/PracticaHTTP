@@ -1,15 +1,12 @@
 import org.jsoup.Jsoup;
 import org.jsoup.Connection;
-import org.jsoup.HttpStatusException;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.omg.CORBA.PUBLIC_MEMBER;
 
 import java.io.IOException;
-import java.io.PushbackInputStream;
 import java.net.MalformedURLException;
-import java.security.PublicKey;
+
 
 public class Functions {
 
@@ -65,5 +62,45 @@ public class Functions {
         return countPic;
     }
 
-    public 
+    public static void countForms(String URL){
+        int countPOST, countGET, form = 1;
+
+        Elements formElement = document.select("[method=post]");
+        countPOST = formElement.size();
+        System.out.println("Cantidad de formularios del Metodo POST: " + countPOST);
+
+        formElement = document.select("[method=get}");
+        countGET = formElement.size();
+        System.out.println("Cantidad de formularios del Metodo GET: " + countGET);
+
+        for(Element element: document.getElementsByTag("form").forms()){
+            String method = element.attr("method");
+            Elements typePOST = element.getElementsByAttributeValueContaining("method", "post");
+
+            for(Element elm: typePOST) {
+                String address = element.absUrl("action");
+                try {
+                    System.out.println("Form: #" + form);
+                    Document doc = Jsoup.connect(address)
+                            .data("Asignatura", "Practica1")
+                            .header("Matricula", "20102155").post();
+
+                    System.out.println(doc.body().toString());
+                }
+                    catch(IOException e){
+                    e.printStackTrace();
+                }
+            }
+
+            Elements inputs = element.select("input");
+                for(Element elm2: inputs){
+                    System.out.println("Type: " + elm2.attr("type"));
+                }
+
+                System.out.println("");
+                form++;
+            }
+        }
+
 }
+

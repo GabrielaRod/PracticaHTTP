@@ -1,8 +1,6 @@
-import jdk.nashorn.internal.ir.FunctionCall;
-
-import java.util.Scanner;
 import java.io.IOException;
-import java.net.MalformedURLException;
+import java.util.Scanner;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -12,9 +10,16 @@ public class Main {
 
         String URL = scanner.nextLine(); //Asigns user input to variable URL
 
-        Functions.validateURL(URL);
-        Functions.countLines(URL);
-        Functions.countParagraphs(URL);
-        Functions.countPictures(URL);
+        if(Functions.validateURL(URL)) {
+            System.out.println("URL Validada exitosamente!");
+            System.out.println("Cantidad de Lineas: " + Functions.countLines(URL));
+            System.out.println("Cantidad de Parrafos: " + Functions.countParagraphs(URL));
+            System.out.println("Cantidad de Fotos dentro de los Parrafos: " + Functions.countPictures(URL));
+
+            Functions.countForms(URL);
+        }
+        else{
+            System.out.println("URL Invalida!");
+            }
     }
 }
