@@ -22,6 +22,7 @@ interpretador la trama HTML y aplicando las siguientes:
 
 Crea un programa por consola que pida por la entrada estándar una URL
 valida, una vez consultada realice las siguientes operaciones:
+
 a) Indicar la cantidad de lineas del recurso retornado.
 b) Indicar la cantidad de párrafos (p) que contiene el documento HTML.
 c) Indicar la cantidad de imágenes (img) dentro de los párrafos que
