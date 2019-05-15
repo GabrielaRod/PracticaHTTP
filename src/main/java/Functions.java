@@ -69,7 +69,7 @@ public class Functions {
         countPOST = formElement.size();
         System.out.println("Cantidad de formularios del Metodo POST: " + countPOST);
 
-        formElement = document.select("[method=get}");
+        formElement = document.select("[method=get]");
         countGET = formElement.size();
         System.out.println("Cantidad de formularios del Metodo GET: " + countGET);
 
