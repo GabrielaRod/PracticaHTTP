@@ -16,6 +16,7 @@ public class Main {
             System.out.println("Cantidad de Parrafos: " + Functions.countParagraphs(URL));
             System.out.println("Cantidad de Fotos dentro de los Parrafos: " + Functions.countPictures(URL));
 
+            
             Functions.countForms(URL);
         }
         else{
